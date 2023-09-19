@@ -1,3 +1,9 @@
+/* 
+
+Note: This is not a step by step guide, it's more of a quick helpful reference. Study videos, courses & do your own research. This will not cover everything Javascript has to offer, it would just barely scratch the surface. As you master Javascript you will need to constantly google answers & questions (ask chat-gpt). It's a journey, DON'T GIVE UP!!!
+
+*/
+
 // Variables
 const myVariable = "Jesus";
 let myOtherVariable = 777;
@@ -34,6 +40,25 @@ console.log(10 * 5); // 50
 console.log(10 / 5); // 2
 console.log(10 ** 5); // 100000
 console.log(10 % 5); // 0
+
+// logical operators
+let logX = 3;
+let logY = 7;
+
+if (logX === 3 && logY === 7) {
+	console.log("Logical (AND) &&, both sides must be true");
+} else if (logX == "Hey" || logY === 6) {
+	console.log("Logical (OR) ||, one side must be true");
+} else if (logY !== 7) {
+	// because logY is 7, this else if() will not run.
+	console.log("Logical (NOT) !,  It changes true to false and false to true.");
+}
+
+// Numbers (Math) Object : research all you can do with Math online
+const numFloor = Math.floor(12.75); // 12
+const numCeil = Math.ceil(65.24); // 66
+const numRandom = Math.random(); // number between 0 and 1
+const specificNumRandom = Math.floor(Math.random() * 100); // whole number between 0 and 100
 
 // string manipulation
 
@@ -89,6 +114,13 @@ const orangeJuice = juiceString.split("Juice").join("Orange"); // (replace all r
 console.log(appleJuice);
 console.log(orangeJuice);
 
+// Date Object : research all you can do with Date() online
+const date = new Date();
+console.log(date);
+console.log(date.getSeconds());
+console.log(date.getMinutes());
+console.log(date.getFullYear());
+
 // Conditional statements
 let testVariable = 5;
 
@@ -96,7 +128,7 @@ let testVariable = 5;
 if (testVariable >= 10) {
 	console.log("Greater or Equal To 10");
 } else if (testVariable === 5) {
-	console.log("Equal To 5"); // Equal To 5
+	console.log("Strictly Equal To 5"); // Strictly Equal To 5
 } else {
 	console.log("Something Else ...");
 }
@@ -177,6 +209,92 @@ do {
 	console.log(`Our var is now: ${otherCount}`);
 	otherCount--;
 } while (otherCount != 0);
+
+// Array Manipulation
+
+// adding elements
+const mainArray = ["Shirt", "Pants"];
+
+// .push()
+mainArray.push("Coat");
+mainArray.push(100);
+console.log(mainArray); // "Shirt", "Pants", "Coat", 100
+
+// .unshift()
+mainArray.unshift("Hat");
+console.log(mainArray); // "Hat", "Shirt", "Pants", "Coat", 100
+
+// .splice(index, items2Delete, items2Add) // add or delete
+mainArray.splice(1, 0, "+");
+console.log(mainArray); // "Hat", "+", "Shirt", "Pants", "Coat", 100
+
+// remove elements
+
+// .shift()
+mainArray.shift();
+console.log(mainArray); // "+", Shirt", "Pants", "Coat", 100
+
+// .pop()
+mainArray.pop();
+console.log(mainArray); // "+", Shirt", "Pants", "Coat"
+
+// .splice(index, items2Delete, items2Add) // add or delete
+mainArray.splice(2, 1);
+console.log(mainArray); // "+", Shirt", "Coat"
+
+// concatenating arrays
+
+// .concat()
+const moonArray = ["night", "man on moon", "houston"];
+const sunArray = ["day", "bright", "hot"];
+
+let firstBlend = moonArray.concat(sunArray);
+console.log(firstBlend); // ["night", "man on moon", "houston", "day", "bright", "hot"]
+
+// [...] spread operator
+let secondBlend = [...moonArray, ...sunArray];
+console.log(secondBlend); // ["night", "man on moon", "houston", "day", "bright", "hot"]
+
+const airArray = ["Swwshhhh", 7];
+
+let thirdBlend = [airArray, ...moonArray, sunArray];
+console.log(thirdBlend); // [["Swwshhhh", 7], "night", "man on moon", "houston", ["day", "bright", "hot"]]
+
+// iterating over elements
+// .forEach(), .map(), .filter(), .reduce() => some higher order functions ...
+// could also iterate with a standard for loop
+
+const list2Loop = ["Hello", "Sun", "Moon", "Most Important, Jesus"];
+
+// for
+for (let i = 0; i < list2Loop.length; i++) {
+	console.log(`Index: ${i}, Standard (for): ${list2Loop[i]}`);
+}
+
+// foreach
+list2Loop.forEach(function (item, index) {
+	console.log(`(forEach) Index : ${index}, (forEach) Item: ${item}`);
+});
+
+// map
+list2Loop.map((item) => {
+	console.log(`(map) ${item}`);
+});
+
+// filter
+let filtered2Loop = list2Loop.filter((item) => {
+	return item.length >= 5;
+});
+
+console.log(filtered2Loop);
+
+let allNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const totalOfAllNumbers = allNumbers.reduce((acc, num) => {
+	return acc + num;
+});
+
+console.log("Total Of All Numbers: ", totalOfAllNumbers);
 
 // Functions
 
@@ -432,3 +550,26 @@ function multiply(num) {
 const firstNumBy = multiply(7); // multiply takes in a num parameter
 // firstNumBy will take in the secondNum parameter
 console.log(firstNumBy(11)); // 77
+
+// asynchronous js
+
+// promises
+
+// delayed greeting
+function delayedGreeting(name, delayTime) {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(`Hi ${name}!`);
+		}, delayTime);
+	});
+}
+
+delayedGreeting("Jeremy", 3000)
+	.then((greet) => {
+		console.log(greet);
+	})
+	.catch((error) => {
+		console.log(error);
+	});
+
+// api fetch
