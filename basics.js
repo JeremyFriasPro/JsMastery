@@ -572,4 +572,24 @@ delayedGreeting("Jeremy", 3000)
 		console.log(error);
 	});
 
-// api fetch
+// async/await
+
+async function runAsyncTask() {
+	try {
+		const result = await someAsyncTask(3000);
+		console.log(result);
+		console.log("I waited for the async task to complete.");
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function someAsyncTask(delay) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve("Some Async Operation.");
+		}, delay);
+	});
+}
+
+runAsyncTask();
